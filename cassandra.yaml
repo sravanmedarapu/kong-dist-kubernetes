@@ -5,9 +5,10 @@ metadata:
     app: cassandra
   name: cassandra
 spec:
-  clusterIP: None
+  type: NodePort
   ports:
     - port: 9042
+      targetPort: 9042
   selector:
     app: cassandra
 
@@ -103,6 +104,6 @@ kind: StorageClass
 apiVersion: storage.k8s.io/v1beta1
 metadata:
   name: fast
-provisioner: kubernetes.io/gce-pd
+provisioner: k8s.io/minikube-hostpath
 parameters:
   type: pd-ssd
